@@ -11,27 +11,35 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150226225111) do
+ActiveRecord::Schema.define(version: 20150228025224) do
 
-  create_table "polls", force: true do |t|
-    t.string   "title"
+  create_table "owners", force: :cascade do |t|
+    t.string   "first_name", limit: 255
+    t.string   "last_name",  limit: 255
+    t.datetime "birthdate"
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
+  end
+
+  create_table "polls", force: :cascade do |t|
+    t.string   "title",      limit: 255
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-  create_table "possible_answers", force: true do |t|
-    t.integer  "question_id"
-    t.string   "title"
+  create_table "possible_answers", force: :cascade do |t|
+    t.integer  "question_id", limit: 4
+    t.string   "title",       limit: 255
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
   add_index "possible_answers", ["question_id"], name: "index_possible_answers_on_question_id", using: :btree
 
-  create_table "questions", force: true do |t|
-    t.string   "title"
-    t.string   "kind"
-    t.integer  "poll_id"
+  create_table "questions", force: :cascade do |t|
+    t.string   "title",      limit: 255
+    t.string   "kind",       limit: 255
+    t.integer  "poll_id",    limit: 4
     t.datetime "created_at"
     t.datetime "updated_at"
   end
