@@ -9,6 +9,8 @@ gem 'coffee-rails', '~> 4.0.0'
 gem 'haml-rails'
 gem 'pry-rails'
 gem 'simple_form'
+gem 'high_voltage'
+gem 'google_drive'
 
 gem 'bootstrap-sass'
 gem 'jquery-rails'
