@@ -1,9 +1,21 @@
 class VisitorsController < ApplicationController
   def new
-    @owner = Owner.new
-    @owner.first_name = "first"
-    @owner.last_name = "last"
-    @owner.birthdate = Date.new(1968, 3, 18)
+    @visitor = Visitor.new
 
+  end
+  
+  def create
+    @visitor = Visitor.new(secure_params)
+    if @visitor.valid?
+      @visitor.subscribe
+      flash[:notice] = "Singed up #{@visitor.email}."
+      redirect_to root_path
+    else
+      render :new
+    end
+  end
+  private
+  def secure_params
+    params.require(:visitor).permit(:email)
   end
 end

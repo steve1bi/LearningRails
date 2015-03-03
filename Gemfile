@@ -11,6 +11,7 @@ gem 'pry-rails'
 gem 'simple_form'
 gem 'high_voltage'
 gem 'google_drive'
+gem 'gibbon'
 
 gem 'bootstrap-sass'
 gem 'jquery-rails'
